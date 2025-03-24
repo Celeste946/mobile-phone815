@@ -12,6 +12,45 @@
 </head>
 
 <body>
+    <!-- 添加设备检测提示模态框 -->
+    <div class="modal fade" id="deviceWarningModal" tabindex="-1" aria-labelledby="deviceWarningModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deviceWarningModalLabel">设备不兼容</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    此页面仅支持移动设备访问，即将跳转到兼容页面。
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="redirectToCompatiblePage()">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 设备检测
+        function isMobileDevice() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // 跳转到兼容页面
+        function redirectToCompatiblePage() {
+            window.location.href = 'https://celeste946.github.io/XimC815/Main%20page.html'; // 替换为你要跳转的页面URL
+        }
+
+        // 页面加载时检测
+        window.onload = function() {
+            if (!isMobileDevice()) {
+                const myModal = new bootstrap.Modal(document.getElementById('deviceWarningModal'));
+                myModal.show();
+            }
+        };
+    </script>
+
     <!-- 导航栏 -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
         <div class="container">
